@@ -35,9 +35,9 @@ class MyHomePage extends StatelessWidget {
       ),
       body: Center(
         child: ElevatedButton(
-          child: Text(
+          child: const Text(
             'Change Theme',
-            style: Theme.of(context).textTheme.headlineMedium,
+            style: TextStyle(fontSize: 24.0),
           ),
           onPressed: () {
             final randInt = Random().nextInt(10);
