@@ -16,15 +16,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<ThemeBloc>(
       create: (context) => ThemeBloc(),
-      child: MaterialApp(
-        title: 'BLoC Payload',
-        theme: (context.watch<ThemeBloc>().state.appTheme ==
-                AppTheme
-                    .light) // context error : watch()의 context 는 build의 context 임.
-            ? ThemeData.light()
-            : ThemeData.dark(),
-        home: const MyHomePage(title: 'BLoC Payload'),
-      ),
+      child: Builder(builder: (context) {
+        return MaterialApp(
+          title: 'BLoC Payload',
+          theme: (context.watch<ThemeBloc>().state.appTheme ==
+                  AppTheme
+                      .light) // context error : watch()의 context 는 build의 context 임.
+              ? ThemeData.light()
+              : ThemeData.dark(),
+          home: const MyHomePage(title: 'BLoC Payload'),
+        );
+      }),
     );
   }
 }
